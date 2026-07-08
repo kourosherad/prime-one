@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>محصول — Prime One</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="/manifest.json" />
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/dist/tailwind.css" />
+  <link rel="stylesheet" href="/assets/css/app.css" />
+</head>
+<body>
+  <div id="header"></div>
+  <main class="pt-16 min-h-screen">
+    <!-- Breadcrumbs -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 text-xs text-mist">
+      <nav id="breadcrumbs" class="flex items-center gap-2 flex-wrap"></nav>
+    </div>
+
+    <div id="product-root" class="max-w-7xl mx-auto px-4 sm:px-6 pb-16">
+      <!-- skeleton -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="skeleton aspect-square w-full rounded-3xl"></div>
+        <div class="space-y-4">
+          <div class="skeleton h-8 w-3/4"></div>
+          <div class="skeleton h-4 w-1/2"></div>
+          <div class="skeleton h-32 w-full"></div>
+          <div class="skeleton h-12 w-full"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <a href="/pages/cart.html" class="float-cta" aria-label="سبد خرید"><i class="fa-solid fa-bag-shopping text-lg"></i></a>
+  <div id="footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script type="module" src="/assets/js/pages/product.js"></script>
+</body>
+</html>

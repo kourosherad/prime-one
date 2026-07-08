@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ثبت‌نام — Prime One</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/dist/tailwind.css" />
+  <link rel="stylesheet" href="/assets/css/app.css" />
+</head>
+<body>
+  <div id="header"></div>
+  <main class="pt-16 min-h-screen grid place-items-center px-4">
+    <div class="w-full max-w-md glass p-8 my-10">
+      <div class="text-center mb-6">
+        <span class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-brand text-ink font-extrabold text-lg shadow-glow">P1</span>
+        <h1 class="text-2xl font-extrabold mt-3">ساخت حساب کاربری</h1>
+        <p class="text-sm text-mist mt-1">در چند ثانیه ثبت‌نام کنید.</p>
+      </div>
+      <form id="register-form" class="space-y-4">
+        <div class="grid grid-cols-2 gap-3">
+          <div><label class="label">نام</label><input name="firstName" class="input" required /></div>
+          <div><label class="label">نام خانوادگی</label><input name="lastName" class="input" required /></div>
+        </div>
+        <div><label class="label">ایمیل</label><input name="email" type="email" class="input" required /></div>
+        <div><label class="label">شماره موبایل (اختیاری)</label><input name="phone" type="tel" class="input" placeholder="09xxxxxxxxx" /></div>
+        <div>
+          <label class="label">رمز عبور</label>
+          <div class="relative">
+            <input name="password" type="password" id="pwd" class="input !pl-10" required minlength="8" />
+            <button type="button" id="toggle-pwd" class="absolute top-1/2 -translate-y-1/2 left-3 text-mist text-sm" tabindex="-1"><i class="fa-solid fa-eye"></i></button>
+          </div>
+          <p class="text-[11px] text-mist mt-1">حداقل ۸ کاراکتر، شامل حروف.</p>
+        </div>
+        <button class="btn-primary w-full !py-3" type="submit">ثبت‌نام</button>
+      </form>
+      <div id="form-msg" class="text-sm text-center mt-4"></div>
+      <p class="text-center text-sm text-mist mt-4">حساب دارید؟ <a href="/pages/login.html" class="text-primary hover:underline">ورود</a></p>
+    </div>
+  </main>
+  <div id="footer"></div>
+  <script type="module" src="/assets/js/pages/register.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+{
+  "name": "prime-one",
+  "version": "1.0.0",
+  "description": "Prime One — مرجع خرید اشتراک و سرویس‌های بین‌المللی (Persian RTL e-commerce platform)",
+  "main": "src/server.js",
+  "type": "commonjs",
+  "private": true,
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "migrate": "knex migrate:latest --knexfile src/database/knexfile.js",
+    "migrate:make": "knex migrate:make --knexfile src/database/knexfile.js",
+    "migrate:rollback": "knex migrate:rollback --knexfile src/database/knexfile.js",
+    "seed": "knex seed:run --knexfile src/database/knexfile.js",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "build:css": "tailwindcss -i ./public/assets/css/tailwind.css -o ./public/assets/dist/tailwind.css --minify",
+    "watch:css": "tailwindcss -i ./public/assets/css/tailwind.css -o ./public/assets/dist/tailwind.css --watch"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "express-validator": "^7.2.0",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "knex": "^3.1.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.11.0",
+    "nodemailer": "^6.9.14",
+    "uuid": "^10.0.0",
+    "winston": "^3.14.2"
+  },
+  "devDependencies": {
+    "eslint": "^9.10.0",
+    "nodemon": "^3.1.4",
+    "prettier": "^3.3.3",
+    "tailwindcss": "^3.4.10"
+  }
+}

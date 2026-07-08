@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>محصولات — Prime One</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="/manifest.json" />
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/dist/tailwind.css" />
+  <link rel="stylesheet" href="/assets/css/app.css" />
+</head>
+<body>
+  <div id="header"></div>
+  <main class="pt-16 min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6">
+      <div class="flex items-center justify-between gap-4 flex-wrap">
+        <div>
+          <h1 id="page-title" class="text-2xl md:text-3xl font-extrabold">همه محصولات</h1>
+          <p id="page-sub" class="text-sm text-mist mt-1"></p>
+        </div>
+        <form id="search-form" class="relative w-full sm:w-80">
+          <i class="fa-solid fa-magnifying-glass absolute top-1/2 -translate-y-1/2 right-3 text-mist text-sm"></i>
+          <input id="search-input" name="q" type="search" placeholder="جستجو..." class="input !pr-9" />
+        </form>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-6 mt-6">
+        <!-- Filters -->
+        <aside class="glass p-5 h-fit lg:sticky lg:top-24 space-y-5" data-aos="fade-up">
+          <div>
+            <h3 class="font-bold text-sm mb-3">مرتب‌سازی</h3>
+            <select id="sort" class="input text-sm">
+              <option value="newest">جدیدترین</option>
+              <option value="popular">پربازدیدترین</option>
+              <option value="bestseller">پرفروش‌ترین</option>
+              <option value="price_asc">ارزان‌ترین</option>
+              <option value="price_desc">گران‌ترین</option>
+            </select>
+          </div>
+          <div>
+            <h3 class="font-bold text-sm mb-3">محدوده قیمت (تومان)</h3>
+            <div class="grid grid-cols-2 gap-2">
+              <input id="min-price" type="number" placeholder="از" class="input text-sm" />
+              <input id="max-price" type="number" placeholder="تا" class="input text-sm" />
+            </div>
+          </div>
+          <label class="flex items-center gap-2 text-sm cursor-pointer">
+            <input id="discount-only" type="checkbox" class="accent-[#FFB300] w-4 h-4" />
+            فقط تخفیف‌دارها
+          </label>
+          <button id="apply-filters" class="btn-primary w-full"><i class="fa-solid fa-filter"></i> اعمال فیلتر</button>
+          <button id="reset-filters" class="btn-ghost w-full">حذف فیلترها</button>
+        </aside>
+
+        <!-- Grid -->
+        <section>
+          <div id="results-info" class="text-xs text-mist mb-3"></div>
+          <div id="products-grid" class="grid grid-cols-2 md:grid-cols-3 gap-4"></div>
+          <div id="load-more-wrap" class="text-center mt-8 hidden">
+            <button id="load-more" class="btn-ghost">بیشتر...</button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <a href="/pages/cart.html" class="float-cta" aria-label="سبد خرید"><i class="fa-solid fa-bag-shopping text-lg"></i></a>
+  <div id="footer"></div>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script type="module" src="/assets/js/pages/category.js"></script>
+</body>
+</html>

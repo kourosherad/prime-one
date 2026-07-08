@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>پیشخوان مدیریت — Prime One</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/dist/tailwind.css" />
+  <link rel="stylesheet" href="/assets/css/app.css" />
+  <style>
+    .admin-sidebar { width: 250px; }
+    @media (max-width: 1023px) { .admin-sidebar { position: fixed; inset-inline-start: -260px; z-index: 60; transition: .3s; height: 100vh; } .admin-sidebar.open { inset-inline-start: 0; } }
+  </style>
+</head>
+<body class="bg-surface-light-2 dark:bg-surface-dark">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside id="admin-sidebar" class="admin-sidebar glass border-0 border-l border-white/20 dark:border-white/5 rounded-none p-4 shrink-0">
+      <a href="/pages/admin/" class="flex items-center gap-2 mb-6 px-2">
+        <span class="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-brand text-ink font-extrabold">P1</span>
+        <span class="font-display font-extrabold">Prime One</span>
+      </a>
+      <nav id="admin-nav" class="space-y-1 text-sm"></nav>
+      <hr class="border-black/10 dark:border-white/10 my-4" />
+      <a href="/" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/10 text-sm"><i class="fa-solid fa-globe w-4"></i> مشاهده سایت</a>
+      <a href="/pages/account.html" class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/10 text-sm"><i class="fa-solid fa-user w-4"></i> حساب کاربری</a>
+    </aside>
+
+    <!-- Main -->
+    <div class="flex-1 min-w-0">
+      <!-- Topbar -->
+      <header class="glass-sm border-0 border-b border-white/20 dark:border-white/5 rounded-none px-4 sm:px-6 h-16 flex items-center justify-between sticky top-0 z-40">
+        <div class="flex items-center gap-3">
+          <button id="sidebar-toggle" class="lg:hidden w-10 h-10 rounded-lg grid place-items-center hover:bg-black/5 dark:hover:bg-white/10"><i class="fa-solid fa-bars"></i></button>
+          <h1 id="page-title" class="font-bold">پیشخوان</h1>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="theme-toggle" class="w-10 h-10 rounded-lg grid place-items-center hover:bg-black/5 dark:hover:bg-white/10"><i class="fa-solid fa-moon dark:hidden"></i><i class="fa-solid fa-sun hidden dark:block"></i></button>
+          <div id="admin-user" class="text-sm hidden sm:block text-mist"></div>
+        </div>
+      </header>
+
+      <main class="p-4 sm:p-6">
+        <div id="admin-content"></div>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <script type="module" src="/assets/js/pages/admin.js"></script>
+</body>
+</html>

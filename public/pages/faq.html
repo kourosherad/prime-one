@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>سوالات متداول — Prime One</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/dist/tailwind.css" />
+  <link rel="stylesheet" href="/assets/css/app.css" />
+</head>
+<body>
+  <div id="header"></div>
+  <main class="pt-16 min-h-screen">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 py-10">
+      <h1 class="text-3xl font-extrabold mb-8">سوالات متداول</h1>
+      <div id="faq" class="space-y-3"></div>
+    </div>
+  </main>
+  <div id="footer"></div>
+  <script type="module">
+    const FAQ = [
+      ['چقدر طول می‌کشد اشتراکم فعال شود؟', 'بیشتر سرویس‌ها به‌صورت خودکار و کمتر از یک ساعت تحویل داده می‌شوند.'],
+      ['آیا گارانتی وجود دارد؟', 'بله، تمام اشتراک‌ها تا پایان مدت گارانتی دارند.'],
+      ['روش پرداخت چیست؟', 'پرداخت از طریق درگاه امن زرین‌پال و کیف پول داخلی انجام می‌شود.'],
+      ['اگر اشتراک مورد نظرم نبود؟', 'از بخش درخواست محصول جدید یا تیکت پشتیبانی درخواست کنید.'],
+      ['آیا پرداخت امن است؟', 'بله، تمام تراکنش‌ها از طریق درگاه معتبر زرین‌پال و رمزنگاری SSL انجام می‌شود.'],
+    ];
+    document.getElementById('faq').innerHTML = FAQ.map(([q, a]) => `
+      <details class="faq-item glass-sm p-4">
+        <summary class="flex items-center justify-between gap-3 font-semibold"><span>${q}</span><i class="fa-solid fa-chevron-down faq-icon text-mist"></i></summary>
+        <p class="text-sm text-mist leading-8 mt-3">${a}</p>
+      </details>`).join('');
+  </script>
+</body>
+</html>

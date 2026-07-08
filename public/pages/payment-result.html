@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>نتیجه پرداخت — Prime One</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/dist/tailwind.css" />
+  <link rel="stylesheet" href="/assets/css/app.css" />
+</head>
+<body>
+  <div id="header"></div>
+  <main class="pt-16 min-h-screen grid place-items-center px-4">
+    <div id="result" class="w-full max-w-md glass p-8 my-10 text-center"></div>
+  </main>
+  <div id="footer"></div>
+  <script type="module">
+    import { persian } from '/assets/js/persian.js';
+    const params = new URLSearchParams(location.search);
+    const status = params.get('status');
+    const order = params.get('order');
+    const root = document.getElementById('result');
+
+    const map = {
+      success: { icon: 'fa-circle-check', color: 'text-green-500', title: 'پرداخت موفق بود', desc: 'سفارش شما با موفقیت ثبت و پرداخت شد.', btn: 'مشاهده سفارش' },
+      fail: { icon: 'fa-circle-xmark', color: 'text-red-500', title: 'پرداخت ناموفق بود', desc: 'متاسفانه پرداخت ناموفق بود. در صورت کسر مبلغ، حداکثر ۷۲ ساعت برگردانده می‌شود.', btn: 'تلاش مجدد' },
+      unknown: { icon: 'fa-circle-question', color: 'text-mist', title: 'در حال بررسی', desc: 'وضعیت پرداخت در حال بررسی است.', btn: 'صفحه اصلی' },
+    };
+    const m = map[status] || map.unknown;
+    root.innerHTML = `
+      <i class="fa-solid ${m.icon} ${m.color} text-5xl mb-4"></i>
+      <h1 class="text-2xl font-extrabold">${m.title}</h1>
+      <p class="text-sm text-mist mt-2 leading-8">${m.desc}</p>
+      ${order ? `<div class="glass-sm p-3 mt-5 text-sm">شماره سفارش: <b class="text-primary">${persian.toEn ? order : order}</b></div>` : ''}
+      <div class="flex gap-2 mt-6">
+        <a href="/pages/account.html?tab=orders" class="btn-primary flex-1">${m.btn}</a>
+        <a href="/" class="btn-ghost flex-1">صفحه اصلی</a>
+      </div>`;
+  </script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+/*
+ * Prime One — app-level styles (loaded after Tailwind dist).
+ * Premium micro-interactions, hero background, line-clamp helpers.
+ */
+
+/* Line clamp utilities (used in cards) */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Hero animated gradient mesh background */
+#hero-bg {
+  background:
+    radial-gradient(60% 50% at 20% 20%, rgba(255, 179, 0, 0.18), transparent 60%),
+    radial-gradient(50% 50% at 80% 30%, rgba(255, 111, 0, 0.12), transparent 60%),
+    radial-gradient(40% 40% at 50% 90%, rgba(128, 128, 128, 0.08), transparent 60%);
+  filter: blur(0px);
+}
+.dark #hero-bg {
+  background:
+    radial-gradient(60% 50% at 20% 20%, rgba(255, 179, 0, 0.22), transparent 60%),
+    radial-gradient(50% 50% at 80% 30%, rgba(255, 111, 0, 0.16), transparent 60%),
+    radial-gradient(40% 40% at 50% 90%, rgba(255, 255, 255, 0.04), transparent 60%);
+}
+
+/* Animated floating blobs in hero */
+#hero-bg::before,
+#hero-bg::after {
+  content: '';
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(40px);
+  opacity: 0.5;
+  animation: float 8s ease-in-out infinite;
+}
+#hero-bg::before {
+  width: 220px;
+  height: 220px;
+  top: 10%;
+  right: 15%;
+  background: radial-gradient(circle, #ffb300, transparent 70%);
+}
+#hero-bg::after {
+  width: 280px;
+  height: 280px;
+  bottom: 5%;
+  left: 10%;
+  background: radial-gradient(circle, #ff6f00, transparent 70%);
+  animation-delay: 1.5s;
+}
+
+/* Product card polish */
+.product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.product-card:hover img {
+  transform: scale(1.06);
+}
+
+/* FAQ accordion */
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+}
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.faq-item[open] .faq-icon {
+  transform: rotate(180deg);
+}
+
+/* Swiper tweaks */
+.testimonials-swiper .swiper-slide {
+  height: auto;
+}
+.testimonials-swiper .swiper-pagination-bullet-active {
+  background: #ffb300;
+}
+
+/* Interactive cursor glow (desktop only) */
+@media (hover: hover) and (pointer: fine) {
+  .cursor-glow {
+    position: fixed;
+    width: 24px;
+    height: 24px;
+    border-radius: 9999px;
+    background: rgba(255, 179, 0, 0.25);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    transition: width 0.2s, height 0.2s, opacity 0.2s;
+    mix-blend-mode: screen;
+  }
+}
+
+/* Smooth page transitions */
+main {
+  animation: page-in 0.5s ease-out;
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Form focus polish */
+.input:focus {
+  box-shadow: 0 0 0 4px rgba(255, 179, 0, 0.15);
+}
+
+/* Hide number input spinners */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

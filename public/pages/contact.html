@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تماس با ما — Prime One</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <link rel="stylesheet" href="/assets/dist/tailwind.css" />
+  <link rel="stylesheet" href="/assets/css/app.css" />
+</head>
+<body>
+  <div id="header"></div>
+  <main class="pt-16 min-h-screen">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10">
+      <h1 class="text-3xl font-extrabold mb-2">تماس با ما</h1>
+      <p class="text-mist mb-8">سوال یا پیشنهادی دارید؟ از راه‌های زیر با ما در ارتباط باشید.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div class="glass p-6 text-center"><i class="fa-solid fa-envelope text-primary text-2xl mb-2"></i><div class="font-semibold">ایمیل</div><div class="text-sm text-mist mt-1">support@primeone.local</div></div>
+        <div class="glass p-6 text-center"><i class="fa-brands fa-telegram text-primary text-2xl mb-2"></i><div class="font-semibold">تلگرام</div><div class="text-sm text-mist mt-1">@primeone</div></div>
+        <div class="glass p-6 text-center"><i class="fa-brands fa-whatsapp text-primary text-2xl mb-2"></i><div class="font-semibold">واتساپ</div><div class="text-sm text-mist mt-1">به‌زودی</div></div>
+      </div>
+      <form id="contact-form" class="glass p-6 max-w-2xl space-y-4">
+        <div class="grid grid-cols-2 gap-3">
+          <input name="name" class="input" placeholder="نام و نام خانوادگی" required />
+          <input name="email" type="email" class="input" placeholder="ایمیل" required />
+        </div>
+        <input name="subject" class="input" placeholder="موضوع" required />
+        <textarea name="message" rows="5" class="input" placeholder="پیام شما..." required></textarea>
+        <button class="btn-primary" type="submit"><i class="fa-solid fa-paper-plane"></i> ارسال پیام</button>
+        <div id="form-msg" class="text-sm"></div>
+      </form>
+    </div>
+  </main>
+  <div id="footer"></div>
+  <script type="module">
+    import { store } from '/assets/js/bootstrap.js';
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      store.toast('پیام شما دریافت شد ✅ به‌زودی پاسخ می‌دهیم.', 'success');
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
