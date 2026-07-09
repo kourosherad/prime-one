@@ -212,5 +212,33 @@ without rework):
 
 ---
 
+## GitHub Pages (static demo)
+
+The storefront is also published as a **static demo** on GitHub Pages so the UI
+is viewable without running the backend:
+
+> **https://kourosherad.github.io/prime-one/**
+
+In this demo mode the site serves bundled sample data (categories, products,
+reviews) instead of calling the API, and clearly badges itself as a demo.
+Features that require a server (login, real checkout, payments, admin data) are
+not functional in the static demo — run the full app locally for those.
+
+**How it works:** pushing to `main` triggers [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml),
+which runs `node scripts/build-pages.js`. That script copies `public/` into
+`dist-pages/`, rewrites all asset/page paths to the `/prime-one/` base, enables
+demo mode (`data-demo="true"`), and publishes the result to Pages.
+
+Preview the build locally:
+```bash
+npm run build:pages
+npx serve dist-pages      # or any static file server
+```
+
+> Note: GitHub Pages serves the **frontend only**. It cannot run Node/Express or
+> MySQL, so the live URL is a visual showcase, not a working store.
+
+---
+
 ## License
 Proprietary — All rights reserved.

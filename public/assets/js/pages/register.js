@@ -3,11 +3,12 @@
  */
 import { api } from '../api.js';
 import { store } from '../bootstrap.js';
+import { url } from '../config.js';
 
 async function init() {
   const u = await store.refreshUser();
   if (u) {
-    location.href = '/';
+    location.href = url('');
     return;
   }
 
@@ -30,7 +31,7 @@ async function init() {
       await api.post('/api/auth/register', data);
       store.toast('ثبت‌نام موفق بود ✅', 'success');
       await store.refreshUser();
-      location.href = '/';
+      location.href = url('');
     } catch (err) {
       msg.innerHTML = `<span class="text-red-500"><i class="fa-solid fa-circle-xmark"></i> ${err.message}</span>`;
       btn.disabled = false;

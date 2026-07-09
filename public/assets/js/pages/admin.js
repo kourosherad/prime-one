@@ -39,7 +39,7 @@ async function init() {
   );
 
   // Auth gate: must be staff.
-  const me = await fetch('/api/auth/me', { credentials: 'include' }).then((r) => r.json()).catch(() => null);
+  const me = await api.get('/api/auth/me').catch(() => null);
   const user = me?.data?.user;
   if (!user || !['super_admin', 'admin', 'manager', 'operator'].includes(user.role)) {
     document.getElementById('admin-content').innerHTML = emptyState('دسترسی مجاز نیست. ابتدا به‌عنوان کاربر مدیریت وارد شوید.', 'fa-lock');

@@ -5,6 +5,7 @@
 import { api, ApiError } from '../api.js';
 import { store } from '../bootstrap.js';
 import { fmtPrice, escapeHtml, emptyState } from '../helpers.js';
+import { url } from '../config.js';
 
 async function init() {
   const root = document.getElementById('checkout-root');
@@ -14,7 +15,7 @@ async function init() {
   const user = await store.refreshUser();
   if (!user) {
     root.innerHTML = emptyState('برای ادامه باید وارد شوید.', 'fa-user-lock');
-    setTimeout(() => (location.href = `/pages/login.html?redirect=${encodeURIComponent('/pages/checkout.html')}`), 1500);
+    setTimeout(() => (location.href = `${url('pages/login.html')}?redirect=${encodeURIComponent(url('pages/checkout.html'))}`), 1500);
     return;
   }
   if (!cart.length) {

@@ -6,6 +6,7 @@ import { api } from '../api.js';
 import { store } from '../bootstrap.js';
 import { fmtPrice, escapeHtml, emptyState, stars } from '../helpers.js';
 import { persian } from '../persian.js';
+import { url } from '../config.js';
 
 const TABS = [
   { id: 'profile', label: 'پروفایل', icon: 'fa-user' },
@@ -22,7 +23,7 @@ let user = null;
 async function init() {
   user = await store.refreshUser();
   if (!user) {
-    location.href = `/pages/login.html?redirect=${encodeURIComponent('/pages/account.html')}`;
+    location.href = `${url('pages/login.html')}?redirect=${encodeURIComponent(url('pages/account.html'))}`;
     return;
   }
   renderSidebar();
@@ -113,7 +114,7 @@ async function renderProfile(el) {
     try {
       await api.put('/api/account/password', data);
       store.toast('رمز تغییر کرد. دوباره وارد شوید.', 'success');
-      setTimeout(() => (location.href = '/pages/login.html'), 1500);
+      setTimeout(() => (location.href = url('pages/login.html')), 1500);
     } catch (err) { store.toast(err.message, 'error'); }
   });
 }

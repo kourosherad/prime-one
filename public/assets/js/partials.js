@@ -3,6 +3,10 @@
  * Pages call mountPartials() to render the header/footer and wire interactions.
  */
 import { subscribe, getState, toggleTheme, cartCount, refreshUser, isAdmin } from './store.js';
+import { url, DEMO_MODE } from './config.js';
+
+// Local helper so template strings stay readable: path('pages/login.html')
+const path = (p) => url(p);
 
 export function navbarHTML() {
   return `
@@ -159,9 +163,10 @@ export async function mountPartials() {
   document.documentElement.classList.toggle('dark', saved === 'dark');
   document.documentElement.setAttribute('dir', 'rtl');
 
-  // Fetch categories for nav.
+  // Fetch categories for nav (demo mode returns bundled data).
   try {
-    const res = await fetch('/api/catalog/categories').then((r) => r.json());
+    const { api } = await import('./api.js');
+    const res = await api.get('/api/catalog/categories');
     const cats = (res.data || []).filter((c) => !c.parent_id);
     const nav = document.getElementById('cat-nav');
     const mobile = document.getElementById('mobile-cat-nav');
@@ -195,8 +200,8 @@ export async function mountPartials() {
   document.addEventListener('click', () => dd?.classList.add('hidden'));
 
   document.getElementById('logout-btn')?.addEventListener('click', async () => {
-    await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' });
-    location.href = '/';
+    if (!DEMO_MODE) await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' });
+    location.href = path('');
   });
 
   document.getElementById('newsletter-form')?.addEventListener('submit', (e) => {
@@ -222,8 +227,8 @@ export async function mountPartials() {
       d?.classList.toggle('hidden');
     });
     document.getElementById('logout-btn')?.addEventListener('click', async () => {
-      await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' });
-      location.href = '/';
+      if (!DEMO_MODE) await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' });
+      location.href = path('');
     });
   };
   subscribe(render);

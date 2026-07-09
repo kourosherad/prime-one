@@ -5,6 +5,7 @@ import { api, ApiError } from '../api.js';
 import { store } from '../bootstrap.js';
 import { fmtPrice, fmtNum, productCard, stars, escapeHtml, emptyState } from '../helpers.js';
 import { persian } from '../persian.js';
+import { url } from '../config.js';
 
 const slug = new URLSearchParams(location.search).get('slug');
 
@@ -168,7 +169,7 @@ function render(p) {
     store.addToCart(p.id, Math.max(1, +qtyEl.value || 1), {
       id: p.id, slug: p.slug, title: p.title, main_image: p.main_image, price,
     });
-    location.href = '/pages/checkout.html';
+    location.href = url('pages/checkout.html');
   });
 
   // Review form (only for logged-in users).

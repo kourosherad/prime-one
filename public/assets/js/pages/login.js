@@ -3,8 +3,9 @@
  */
 import { api } from '../api.js';
 import { store } from '../bootstrap.js';
+import { url } from '../config.js';
 
-const redirect = new URLSearchParams(location.search).get('redirect') || '/';
+const redirect = new URLSearchParams(location.search).get('redirect') || url('');
 
 async function init() {
   // Already logged in?

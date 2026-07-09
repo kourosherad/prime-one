@@ -15,7 +15,8 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "build:css": "tailwindcss -i ./public/assets/css/tailwind.css -o ./public/assets/dist/tailwind.css --minify",
-    "watch:css": "tailwindcss -i ./public/assets/css/tailwind.css -o ./public/assets/dist/tailwind.css --watch"
+    "watch:css": "tailwindcss -i ./public/assets/css/tailwind.css -o ./public/assets/dist/tailwind.css --watch",
+    "build:pages": "node scripts/build-pages.js"
   },
   "engines": {
     "node": ">=18.0.0"

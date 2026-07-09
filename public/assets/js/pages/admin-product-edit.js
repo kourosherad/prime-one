@@ -3,6 +3,7 @@
  */
 import { api } from '../api.js';
 import { escapeHtml } from '../helpers.js';
+import { url } from '../config.js';
 
 const id = new URLSearchParams(location.search).get('id');
 
@@ -93,7 +94,7 @@ async function init() {
       } else {
         await api.post('/api/admin/products', payload);
       }
-      location.href = '/pages/admin/';
+      location.href = url('pages/admin/');
     } catch (err) {
       msg.innerHTML = `<span class="text-red-500">${escapeHtml(err.message)}</span>`;
     }
