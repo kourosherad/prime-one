@@ -31,6 +31,12 @@ build/
 tmp/
 .tmp/
 
+# IMPORTANT: do NOT ignore the compiled Tailwind output that ships with the
+# static frontend. The broad "dist/" rule above would otherwise exclude
+# public/assets/dist/tailwind.css.
+!public/assets/dist/
+!public/assets/dist/**
+
 # Editor / OS
 .DS_Store
 Thumbs.db
