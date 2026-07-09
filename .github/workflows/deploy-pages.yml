@@ -27,19 +27,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
-
-      # Install dev deps (tailwindcss) so we can compile the stylesheet.
-      - name: Install dependencies
-        run: npm ci
-
-      # Compile Tailwind → public/assets/dist/tailwind.css. This file is
-      # gitignored locally, so it must be generated in CI before building.
-      - name: Build CSS
-        run: npm run build:css
 
       # Build the static site: copies public/ → dist-pages/, rewrites asset
-      # paths to /prime-one/, enables demo mode. No deps needed (pure Node).
+      # paths to /prime-one/, enables demo mode. The compiled Tailwind CSS is
+      # committed to the repo (public/assets/dist/tailwind.css), so no npm
+      # install or CSS build step is needed here.
       - name: Build static site
         env:
           # Derive base path from the repo name so it works for any project page.
