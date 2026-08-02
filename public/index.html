@@ -30,54 +30,85 @@
 <body>
   <div id="header"></div>
 
-  <main class="pt-16">
+  <main class="pt-16 home-page">
     <!-- ───────── HERO ───────── -->
-    <section class="relative overflow-hidden">
+    <section class="home-hero relative overflow-hidden">
       <div id="hero-bg" class="absolute inset-0 -z-10"></div>
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-20 md:py-28 text-center">
-        <span class="chip animate-fade-in" data-aos="fade-down"><i class="fa-solid fa-bolt text-primary"></i> تحویل فوری و خودکار</span>
-        <h1 class="mt-6 text-4xl md:text-6xl font-extrabold tracking-tight text-balance" data-aos="fade-up">
-          مرجع خرید <span class="bg-gradient-brand bg-clip-text text-transparent">اشتراک و سرویس‌های بین‌المللی</span>
-        </h1>
-        <p class="mt-5 text-base md:text-lg text-mist max-w-2xl mx-auto leading-8" data-aos="fade-up" data-aos-delay="100">
-          هوش مصنوعی، سئو، موسیقی، ویدیو، آموزش و طراحی؛ همه در یک پلتفرم امن با گارانتی تا پایان مدت اشتراک.
-        </p>
-        <div class="mt-8 flex flex-wrap items-center justify-center gap-3" data-aos="fade-up" data-aos-delay="200">
-          <a href="#popular" class="btn-primary text-base !px-7 !py-3"><i class="fa-solid fa-bag-shopping"></i> مشاهده محصولات</a>
-          <a href="#categories" class="btn-ghost text-base !px-7 !py-3">دسته‌بندی‌ها</a>
+      <div class="home-hero__inner max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="home-hero__copy">
+          <span class="home-eyebrow" data-aos="fade-down"><i class="fa-solid fa-bolt"></i> فعال‌سازی سریع، خرید مطمئن</span>
+          <h1 data-aos="fade-up">
+            سرویس‌های جهانی،<br />
+            <span>ساده و در دسترس.</span>
+          </h1>
+          <p data-aos="fade-up" data-aos-delay="100">
+            اشتراک ابزارهای هوش مصنوعی، طراحی، سرگرمی و آموزش را با قیمت شفاف، تحویل سریع و پشتیبانی فارسی تهیه کنید.
+          </p>
+          <div class="home-hero__actions" data-aos="fade-up" data-aos-delay="180">
+            <a href="#popular" class="btn-primary home-primary-action">مشاهده سرویس‌ها <i class="fa-solid fa-arrow-left"></i></a>
+            <a href="#how-it-works" class="home-text-link"><i class="fa-regular fa-circle-play"></i> روند خرید چگونه است؟</a>
+          </div>
+          <div class="home-trust-line" data-aos="fade-up" data-aos-delay="240">
+            <span><i class="fa-solid fa-shield-halved"></i> گارانتی تا پایان اشتراک</span>
+            <span><i class="fa-solid fa-headset"></i> پشتیبانی واقعی</span>
+          </div>
         </div>
 
-        <!-- floating service chips -->
-        <div class="mt-14 flex flex-wrap items-center justify-center gap-3" data-aos="fade-up" data-aos-delay="300">
-          <span class="chip"><i class="fa-brands fa-spotify text-primary"></i> Spotify</span>
-          <span class="chip"><i class="fa-solid fa-robot text-primary"></i> ChatGPT</span>
-          <span class="chip"><i class="fa-brands fa-udemy text-primary"></i> Udemy</span>
-          <span class="chip"><i class="fa-brands fa-canva text-primary"></i> Canva</span>
-          <span class="chip"><i class="fa-solid fa-film text-primary"></i> Netflix</span>
-          <span class="chip"><i class="fa-solid fa-cloud text-primary"></i> Google One</span>
+        <div class="home-hero__showcase" data-aos="fade-right">
+          <div class="showcase-orbit showcase-orbit--one"></div>
+          <div class="showcase-orbit showcase-orbit--two"></div>
+          <div class="showcase-main-card">
+            <div class="showcase-card__top">
+              <span class="showcase-logo"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+              <span class="showcase-status"><i></i> آماده تحویل</span>
+            </div>
+            <div>
+              <small>انتخاب امروز</small>
+              <strong>ChatGPT Plus</strong>
+              <p>یک ماه دسترسی کامل و اختصاصی</p>
+            </div>
+            <div class="showcase-card__bottom">
+              <span>از ۳۹۰ هزار تومان</span>
+              <a href="/pages/product.html?slug=chatgpt-plus-1m" aria-label="مشاهده ChatGPT Plus"><i class="fa-solid fa-arrow-left"></i></a>
+            </div>
+          </div>
+          <div class="showcase-float showcase-float--top"><i class="fa-solid fa-bolt"></i><span><b>کمتر از یک ساعت</b>میانگین تحویل</span></div>
+          <div class="showcase-float showcase-float--bottom"><span class="showcase-avatars">مـ سـ عـ</span><span><b>۱۲,۰۰۰+</b>مشتری راضی</span></div>
         </div>
       </div>
     </section>
 
     <!-- ───────── STATS ───────── -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 -mt-4">
-      <div class="glass grid grid-cols-2 md:grid-cols-4 gap-4 p-6 md:p-8" data-aos="fade-up">
+    <section class="home-stats max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="home-stats__grid" data-aos="fade-up">
         <div class="text-center">
-          <div class="text-3xl md:text-4xl font-extrabold bg-gradient-brand bg-clip-text text-transparent" data-counter="12000">۰</div>
-          <div class="text-xs md:text-sm text-mist mt-1">مشتری فعال</div>
+          <div class="home-stat-number" data-counter="12000">۰</div>
+          <div class="home-stat-label">مشتری فعال</div>
         </div>
         <div class="text-center">
-          <div class="text-3xl md:text-4xl font-extrabold bg-gradient-brand bg-clip-text text-transparent" data-counter="350">۰</div>
-          <div class="text-xs md:text-sm text-mist mt-1">سرویس فعال</div>
+          <div class="home-stat-number" data-counter="350">۰</div>
+          <div class="home-stat-label">سرویس فعال</div>
         </div>
         <div class="text-center">
-          <div class="text-3xl md:text-4xl font-extrabold bg-gradient-brand bg-clip-text text-transparent" data-counter="98">۰</div>
-          <div class="text-xs md:text-sm text-mist mt-1">رضایت ٪ (نمره)</div>
+          <div class="home-stat-number"><span data-counter="98">۰</span>٪</div>
+          <div class="home-stat-label">رضایت کاربران</div>
         </div>
         <div class="text-center">
-          <div class="text-3xl md:text-4xl font-extrabold bg-gradient-brand bg-clip-text text-transparent" data-counter="24">۰</div>
-          <div class="text-xs md:text-sm text-mist mt-1">ساعت پشتیبانی</div>
+          <div class="home-stat-number"><span data-counter="24">۰</span>/۷</div>
+          <div class="home-stat-label">پشتیبانی پاسخ‌گو</div>
         </div>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="home-process max-w-7xl mx-auto px-4 sm:px-6 py-16">
+      <div class="home-section-heading">
+        <span>ساده، سریع و شفاف</span>
+        <h2 class="section-title">از انتخاب تا فعال‌سازی در سه قدم</h2>
+      </div>
+      <div class="home-process__grid">
+        <article><span>۱</span><i class="fa-solid fa-magnifying-glass"></i><h3>سرویس را انتخاب کنید</h3><p>میان سرویس‌ها جستجو کنید و پلن مناسب خودتان را بردارید.</p></article>
+        <article><span>۲</span><i class="fa-regular fa-credit-card"></i><h3>پرداخت امن</h3><p>قیمت نهایی و زمان تحویل را ببینید و آنلاین پرداخت کنید.</p></article>
+        <article><span>۳</span><i class="fa-solid fa-bolt"></i><h3>تحویل و پشتیبانی</h3><p>اطلاعات سرویس را دریافت کنید؛ ما تا پایان اشتراک کنار شما هستیم.</p></article>
       </div>
     </section>
 

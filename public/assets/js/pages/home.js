@@ -5,15 +5,11 @@
 import { api } from '../api.js';
 import { store, bindAddToCartIfReady } from '../bootstrap.js';
 import { productCard, skeletonCard, emptyState, stars } from '../helpers.js';
+import { CATEGORIES, PRODUCTS } from '../demoData.js';
 
 async function init() {
   // Init AOS.
   if (window.AOS) window.AOS.init({ duration: 700, once: true, offset: 60 });
-
-  // Hero animation.
-  if (window.gsap) {
-    window.gsap.from('h1', { y: 24, opacity: 0, duration: 0.8, ease: 'power3.out' });
-  }
 
   // Interactive cursor glow (desktop).
   if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
@@ -41,10 +37,11 @@ async function init() {
     renderProducts('newest-grid', data.newest || []);
     renderProducts('discounts-grid', data.discounted || []);
   } catch (e) {
-    grids.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) el.innerHTML = emptyState('بارگذاری ناموفق بود. بعداً تلاش کنید.', 'fa-triangle-exclamation');
-    });
+    // Keep the storefront useful while the local database is not configured.
+    renderCategories(CATEGORIES);
+    renderProducts('bestsellers-grid', PRODUCTS.filter((p) => p.is_bestseller).slice(0, 8));
+    renderProducts('newest-grid', [...PRODUCTS].sort((a, b) => b.id - a.id).slice(0, 8));
+    renderProducts('discounts-grid', PRODUCTS.filter((p) => p.discount_price).slice(0, 8));
   }
 
   renderTestimonials();

@@ -8,6 +8,55 @@ import { url, DEMO_MODE } from './config.js';
 // Local helper so template strings stay readable: path('pages/login.html')
 const path = (p) => url(p);
 
+const NAV_GROUPS = [
+  { label: 'هوش مصنوعی', icon: 'fa-wand-magic-sparkles', slugs: ['buy-ai-account', 'buy-seo-tools'] },
+  { label: 'سرگرمی', icon: 'fa-play', slugs: ['audio-service', 'video-service'] },
+  { label: 'آموزش و طراحی', icon: 'fa-pen-ruler', slugs: ['education-service', 'graphic-design'] },
+  { label: 'ابزارهای دیجیتال', icon: 'fa-layer-group', slugs: ['cloud-storage', 'us-virtual-number'] },
+];
+
+function categoryLink(c, className = '') {
+  return `<a href="/pages/category.html?category=${encodeURIComponent(c.slug)}" class="${className}">
+    <span class="nav-category-icon"><i class="fa-solid ${c.icon || 'fa-tags'}"></i></span>
+    <span><b>${escapeFa(c.name)}</b><small>${escapeFa(c.description || 'مشاهده سرویس‌ها')}</small></span>
+  </a>`;
+}
+
+function renderCategoryNavigation(cats) {
+  const nav = document.getElementById('cat-nav');
+  const mobile = document.getElementById('mobile-cat-nav');
+  const bySlug = new Map(cats.map((c) => [c.slug, c]));
+
+  if (nav) {
+    nav.innerHTML = `
+      <a class="nav-all-link" href="/pages/category.html"><i class="fa-solid fa-border-all"></i> همه سرویس‌ها</a>
+      ${NAV_GROUPS.map((group) => {
+        const children = group.slugs.map((slug) => bySlug.get(slug)).filter(Boolean);
+        return `<div class="nav-group">
+          <button class="nav-group__trigger" type="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid ${group.icon}"></i><span>${group.label}</span><i class="fa-solid fa-chevron-down nav-group__chevron"></i>
+          </button>
+          <div class="nav-dropdown" role="menu">
+            <div class="nav-dropdown__heading"><span>${group.label}</span><small>${children.length.toLocaleString('fa-IR')} دسته</small></div>
+            ${children.map((c) => categoryLink(c, 'nav-dropdown__item')).join('')}
+          </div>
+        </div>`;
+      }).join('')}`;
+  }
+
+  if (mobile) {
+    mobile.innerHTML = `
+      <a class="mobile-nav-all" href="/pages/category.html"><i class="fa-solid fa-border-all"></i> همه سرویس‌ها</a>
+      ${NAV_GROUPS.map((group) => {
+        const children = group.slugs.map((slug) => bySlug.get(slug)).filter(Boolean);
+        return `<details class="mobile-nav-group">
+          <summary><span><i class="fa-solid ${group.icon}"></i>${group.label}</span><i class="fa-solid fa-chevron-down"></i></summary>
+          <div>${children.map((c) => categoryLink(c, 'mobile-nav-child')).join('')}</div>
+        </details>`;
+      }).join('')}`;
+  }
+}
+
 export function navbarHTML() {
   return `
   <header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
@@ -168,20 +217,13 @@ export async function mountPartials() {
     const { api } = await import('./api.js');
     const res = await api.get('/api/catalog/categories');
     const cats = (res.data || []).filter((c) => !c.parent_id);
-    const nav = document.getElementById('cat-nav');
-    const mobile = document.getElementById('mobile-cat-nav');
-    const links = cats
-      .map(
-        (c) =>
-          `<a href="/pages/category.html?category=${encodeURIComponent(c.slug)}" class="px-3 py-1.5 rounded-lg hover:bg-black/5 dark:hover:bg-white/10 whitespace-nowrap transition">${escapeFa(c.name)}</a>`
-      )
-      .join('');
-    if (nav) nav.innerHTML = links;
-    if (mobile)
-      mobile.innerHTML = cats
-        .map((c) => `<a href="/pages/category.html?category=${encodeURIComponent(c.slug)}" class="block px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/10">${escapeFa(c.name)}</a>`)
-        .join('');
-  } catch {}
+    renderCategoryNavigation(cats);
+  } catch {
+    // Local preview fallback: keep navigation populated before MySQL is configured.
+    const { CATEGORIES } = await import('./demoData.js');
+    const cats = CATEGORIES.filter((c) => !c.parent_id);
+    renderCategoryNavigation(cats);
+  }
 
   // Wire interactions.
   const themeToggle = document.getElementById('theme-toggle');
